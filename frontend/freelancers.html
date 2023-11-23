@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Freelancers Page</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="login.html">Login</a>
+      <a href="freelancers.html" class="active">Freelancers</a>
+      <a href="reports.html">Reports</a>
+    </div>
+
+    <div class="content">
+      <div class="controls">
+        <button id="prevPage">Previous Page</button>
+        <button id="nextPage">Next Page</button>
+
+        <select id="sortHourlyRate">
+          <option value="alll">Sort by price</option>
+          <option value="Low">Low</option>
+          <option value="High">High</option>
+        </select>
+        <select id="filterProfession">
+          <option value="all">All Professions</option>
+       
+          <option value="Student">Student</option>
+          <option value="Web Developer">Web Developer</option>
+          <option value="Graphic Designer">Graphic Designer</option>
+        </select>
+        <input type="text" id="searchName" placeholder="Search by Name" />
+      </div>
+
+      <div id="freelancersContainer" class="freelancers-container">
+
+      </div>
+      <div id="paginationButtons"></div>
+    </div>
+
+
+    <script src="freelancers.js"></script>
+  </body>
+</html>
+
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Freelancer Registration</title>
+  </head>
+  <body>
+    <h2>Freelancer Registration</h2>
+    <form id="registrationForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required /><br />
+
+      <label for="profilePicture">Profile Picture:</label>
+      <input
+        type="text"
+        id="profilePicture"
+        name="profilePicture"
+        required
+      /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /><br />
+
+      <label for="profession">Profession:</label>
+      <select id="profession" name="profession" required>
+        <option value="Student">Student</option>
+        <option value="Web Developer">Web Developer</option>
+        <option value="Graphic Designer">Graphic Designer</option></select
+      ><br />
+
+      <label for="skills">Skills (comma-separated):</label>
+      <input type="text" id="skills" name="skills" required /><br />
+
+      <label for="hourlyRate">Hourly Rate:</label>
+      <input type="number" id="hourlyRate" name="hourlyRate" required /><br />
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const formData = new FormData(event.target);
+
+          const data = {
+            id: null,
+            name: formData.get("name"),
+            email: formData.get("email"),
+            password: formData.get("password"),
+            profession: formData.get("profession"),
+            skills: formData
+              .get("skills")
+              .split(",")
+              .map((skill) => skill.trim()),
+            hourlyRate: parseInt(formData.get("hourlyRate")),
+            profilePicture: formData.get("profilePicture"),
+            isBooked: false,
+            bookingStatus: true,
+          };
+
+          fetch("https://backendfreelancer.onrender.com/freelancers", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((responseData) => {
+              alert("Successfully registered.");
+              console.log("Server response:", responseData);
+            })
+            .catch((error) => console.error("Error:", error));
+        });
+    </script>
+  </body>
+</html>
