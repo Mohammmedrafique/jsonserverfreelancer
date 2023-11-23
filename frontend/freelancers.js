@@ -26,7 +26,7 @@ function createFreelancerCard(freelancer) {
   card.classList.add("freelancer-card");
 
   card.innerHTML = `
-          <img src="${freelancer.profilePicture}" alt="Profile Picture">
+          <img src="${freelancer.profile_picture}" alt="Profile Picture">
           <h3>${freelancer.name}</h3>
           <p>Email: ${freelancer.email}</p>
           <p>Profession: ${freelancer.profession}</p>
